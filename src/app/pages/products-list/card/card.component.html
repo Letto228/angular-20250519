@@ -1,0 +1,24 @@
+<mat-card appearance="outlined" class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ product?.name }}</mat-card-title>
+        <mat-card-subtitle>{{ product?.subCategory }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image alt="Photo of a {{ product?.name }}" [src]="product?.images?.[0]?.url" />
+    <mat-card-content>
+        <p>
+            Цена:
+            <span class="price">{{ product?.price }}</span>
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-icon-button>
+            <mat-icon fontIcon="thumb_up" aria-hidden="false"></mat-icon>
+        </button>
+        <h6>{{ product?.rating }}</h6>
+        <button mat-icon-button>
+            <mat-icon fontIcon="thumb_down" aria-hidden="false">thumb-down</mat-icon>
+        </button>
+        <button mat-button>SHARE</button>
+    </mat-card-actions>
+</mat-card>
