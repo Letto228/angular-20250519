@@ -1,0 +1,13 @@
+<mat-card appearance="outlined" class="card">
+    <div class="card_content">
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <img mat-card-image class="card_img" [src]="product.images[0].url" [alt]="product.name" />
+        <mat-card-content>
+            <p class="card_price">
+                price:
+                <strong>{{ product.price }}</strong>
+                $
+            </p>
+        </mat-card-content>
+    </div>
+</mat-card>
