@@ -1,0 +1,25 @@
+<mat-card appearance="outlined" class="example-card">
+    <mat-card-header>
+        <mat-card-subtitle>
+            <a href="{{ productList[0].subCategory }}" class="mat-card-subtitle-config">
+                Планшеты и электронные книги
+            </a>
+        </mat-card-subtitle>
+        <mat-card-title>{{ productList[0].name }}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image alt="Photo of product" [src]="productList[0].images[0].url" />
+    <mat-card-content>
+        <p class="description-config">
+            Краткое описание товара, которого нет и наверное не будет. Но посмотреть как оно
+            вписывается в концепцию надо, поэтому тут написан этот текст.
+        </p>
+        <div class="price-config">
+            <span>Цена</span>
+            <span>{{ productList[0].price }}&nbsp;$</span>
+        </div>
+    </mat-card-content>
+    <mat-card-actions class="mat-card-actions-config">
+        <button mat-button>Просмотр</button>
+        <button mat-button>В корзину</button>
+    </mat-card-actions>
+</mat-card>

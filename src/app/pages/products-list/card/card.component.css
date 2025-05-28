@@ -1,0 +1,22 @@
+.example-card {
+    max-width: 400px;
+}
+.mat-card-subtitle-config {
+    color: lightgrey;
+}
+.mat-card-actions-config {
+    justify-content: space-between;
+}
+.price-config {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 26px;
+    font-weight: bold;
+    text-align: center;
+    align-content: end;
+    padding: 5px;
+}
+.description-config {
+    text-align: justify;
+}
