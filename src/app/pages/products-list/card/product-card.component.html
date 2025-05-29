@@ -1,0 +1,12 @@
+<mat-card appearance="outlined">
+    <img mat-card-image alt="" class="img" [src]="product.images[0].url" />
+    <mat-card-content>
+        <mat-card-title-group>
+            <mat-card-title>{{ product.name }}</mat-card-title>
+            <p mat-card-subtitle>{{ product.price }} ₽</p>
+        </mat-card-title-group>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-button>Купить</button>
+    </mat-card-actions>
+</mat-card>
