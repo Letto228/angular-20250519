@@ -1,0 +1,10 @@
+<div class="product-list">
+    <div *ngFor="let product of products" class="product-card">
+        <img alt="{{ product.name }}" [src]="product.images[0]?.url" />
+        <h3>{{ product.name }}</h3>
+        <p>Цена: {{ product.price }} у.е.</p>
+        <p>Рейтинг: {{ product.rating }} ★</p>
+        <p>Отзывы: {{ product.feedbacksCount }}</p>
+        <p>Категория: {{ product.subCategory }}</p>
+    </div>
+</div>
