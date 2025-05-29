@@ -10,7 +10,5 @@ import {productsMock} from '../../../shared/products/products.mock';
     styleUrl: './card.component.css',
 })
 export class CardComponent {
-    title = productsMock[0].name;
-    price = productsMock[0].price;
-    url = productsMock[0].images[0].url;
+    readonly product = productsMock[0];
 }

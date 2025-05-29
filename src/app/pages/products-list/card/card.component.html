@@ -1,9 +1,9 @@
 <mat-card appearance="outlined" class="example-card">
     <mat-card-header>
         <mat-card-title>
-            {{ title }}
+            {{ product.name }}
         </mat-card-title>
     </mat-card-header>
-    <img mat-card-image [src]="url" [alt]="title" />
-    <mat-card-content>Цена: {{ price }}$</mat-card-content>
+    <img mat-card-image [src]="product.images[0].url" [alt]="product.name" />
+    <mat-card-content>Цена: {{ product.price }}$</mat-card-content>
 </mat-card>
