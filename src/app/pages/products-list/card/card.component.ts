@@ -1,7 +1,7 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import {productsMock} from '../../../shared/products/products.mock';
+import {Product} from '../../../shared/products/product.interface';
 
 @Component({
     selector: 'app-card',
@@ -12,6 +12,10 @@ import {productsMock} from '../../../shared/products/products.mock';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
-    productUrl = productsMock[2].images[0].url;
-    productPrice = productsMock[0].price;
+    readonly products = input.required<Product[]>();
+    readonly productPurchased = output<string>();
+
+    purchaseProduct(product: Product) {
+        this.productPurchased.emit(product._id);
+    }
 }
