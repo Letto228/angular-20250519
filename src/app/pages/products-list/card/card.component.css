@@ -1,0 +1,44 @@
+:host {
+    display: block;
+    width: 300px;
+}
+
+.example-card {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.button-like {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    border-radius: 50%;
+    border: none;
+    background: #bfb8bfad;
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.product-url {
+    max-width: 100%;
+}
+
+.product-price {
+    font-size: 20px;
+    color: red;
+}
+
+.product-button {
+    padding: 13px;
+    background-color: #a73afd;
+    color: aliceblue;
+    font-size: 16px;
+    border-radius: 12px;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+}
