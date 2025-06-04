@@ -1,1 +1,7 @@
-<app-card></app-card>
+<app-card
+    [product]="getCurrentProduct()"
+    [isBuy]="getCurrentProductState()"
+    (productPrev)="onProductPrev()"
+    (productNext)="onProductNext()"
+    (productBuy)="onProductBuy($event)"
+></app-card>

@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import {productsMock} from '../../../shared/products/products.mock';
+import {Product} from '../../../shared/products/product.interface';
 
 @Component({
     selector: 'app-card',
@@ -13,92 +13,32 @@ import {productsMock} from '../../../shared/products/products.mock';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
-    readonly count = signal(0);
+    readonly product = input.required<Product>();
+    readonly isBuy = input.required<boolean>();
 
-    readonly product = computed(() => productsMock[this.count()]);
+    readonly productBuy = output<boolean>();
+    readonly productPrev = output<Product>();
+    readonly productNext = output<Product>();
 
-    // eslint-disable-next-line max-statements
-    constructor() {
-        setInterval(() => {
-            this.count.update(count => count + 1);
-        }, 1000);
-
-        const showCount = signal(false);
-        const count = signal(0);
-        const conditionalCount = computed(() => {
-            console.warn('Computed calculated');
-
-            return showCount() ? `The count: ${count()}` : `Nothing`;
-        });
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Update count');
-        count.update(count => count + 1);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Update count');
-        count.update(count => count + 1);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Update count');
-        count.update(count => count + 1);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Show count: true');
-        showCount.set(true);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Update count');
-        count.update(count => count + 1);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Update count');
-        count.update(count => count + 1);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Update count');
-        count.update(count => count + 1);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
+    getAction(): string {
+        return this.isBuy() ? 'Remove' : 'Buy';
     }
 
-    onProductBuy(event: Event) {
-        event.stopPropagation();
-
-        // eslint-disable-next-line no-console
-        console.log('Buy product');
+    onProductView() {
+        // console.log("Просмотр товара: " + this.product().name);
     }
 
+    // onProductPrev() {
+    //   console.log("Prev product");
+    //   this.productPrev.emit(this.product());
+    // }
+    // onProductNext() {
+    //   console.log("Next product");
+    //   this.productNext.emit(this.product());
+    // }
+    // onProductBuy() {
+    //   this.productBuy.emit(this.isBuy());
+    // }
     isStarActive(starIndex: number): boolean {
         return !!this.product() && this.product().rating >= starIndex;
     }

@@ -23,7 +23,16 @@
             <mat-icon [class.star-active]="isStarActive(5)">star</mat-icon>
         </div>
     </mat-card-content>
-    <mat-card-actions class="mat-card-actions-align-end">
-        <button mat-button [disabled]="!product()" (click)="onProductBuy($event)">Buy</button>
+    <mat-card-actions class="mat-card-actions-config">
+        <button mat-button (click)="onProductView()">View</button>
+        <button mat-button (click)="this.productPrev.emit(this.product())">Prev</button>
+        <button mat-button (click)="this.productNext.emit(this.product())">Next</button>
+        <button
+            mat-button
+            class="{{ getAction() }}-config"
+            (click)="this.productBuy.emit(this.isBuy())"
+        >
+            {{ getAction() }}
+        </button>
     </mat-card-actions>
 </mat-card>
