@@ -1,8 +1,8 @@
-import {ChangeDetectionStrategy, Component, computed, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, input, output} from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import {productsMock} from '../../../shared/products/products.mock';
+import {Product} from '../../../shared/products/product.interface';
 
 @Component({
     selector: 'app-card',
@@ -13,87 +13,12 @@ import {productsMock} from '../../../shared/products/products.mock';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
-    readonly count = signal(0);
-
-    readonly product = computed(() => productsMock[this.count()]);
-
-    // eslint-disable-next-line max-statements
-    constructor() {
-        setInterval(() => {
-            this.count.update(count => count + 1);
-        }, 1000);
-
-        const showCount = signal(false);
-        const count = signal(0);
-        const conditionalCount = computed(() => {
-            console.warn('Computed calculated');
-
-            return showCount() ? `The count: ${count()}` : `Nothing`;
-        });
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Update count');
-        count.update(count => count + 1);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Update count');
-        count.update(count => count + 1);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Update count');
-        count.update(count => count + 1);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Show count: true');
-        showCount.set(true);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Update count');
-        count.update(count => count + 1);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Update count');
-        count.update(count => count + 1);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-
-        // eslint-disable-next-line no-console
-        console.log('Update count');
-        count.update(count => count + 1);
-
-        // eslint-disable-next-line no-console
-        console.log(conditionalCount());
-    }
+    readonly product = input.required<Product>();
+    readonly buyProduct = output<Product>();
 
     onProductBuy(event: Event) {
         event.stopPropagation();
+        this.buyProduct.emit(this.product());
 
         // eslint-disable-next-line no-console
         console.log('Buy product');
