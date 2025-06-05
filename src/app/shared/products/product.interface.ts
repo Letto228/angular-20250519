@@ -10,3 +10,11 @@ export interface Product {
     feedbacksCount: number;
     rating: number;
 }
+
+export interface ProductInfo {
+    id: string;
+    name: string;
+    price: number;
+    image: string;
+    quantity: number;
+}
