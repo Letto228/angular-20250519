@@ -9,7 +9,7 @@ import {applicationConfigMock} from './shared/application-config/application-con
     standalone: true,
     imports: [HeaderComponent, ProductsListComponent, SidenavComponent],
     templateUrl: './app.component.html',
-    styleUrl: './app.component.css',
+    styleUrls: ['./app.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
@@ -28,4 +28,7 @@ export class AppComponent {
     toggleDrawer() {
         this.drawerOpenedStore.update(isOpened => !isOpened);
     }
+    // onProductBought(product: Product) {
+
+    //   }
 }

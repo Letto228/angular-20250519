@@ -1,12 +1,27 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {CardComponent} from './card/card.component';
+import {productsMock} from '../../shared/products/products.mock';
+import {Product} from '../../shared/products/product.interface';
 
 @Component({
     selector: 'app-products-list',
     standalone: true,
-    imports: [CardComponent],
+    imports: [CommonModule, CardComponent],
     templateUrl: './products-list.component.html',
-    styleUrl: './products-list.component.css',
+    styleUrls: ['./products-list.component.css'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductsListComponent {}
+export class ProductsListComponent {
+    @Output() productBought = new EventEmitter<Product>();
+
+    products = [...productsMock];
+
+    // ngOnInit(): void {
+
+    // }
+
+    onProductBought(product: Product) {
+        this.productBought.emit(product);
+    }
+}

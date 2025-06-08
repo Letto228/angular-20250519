@@ -1,5 +1,6 @@
 <!-- <app-header [title]="title"></app-header> -->
 <app-header [appConfig]="applicationConfig" (menuClick)="onMenuClicked($event)"></app-header>
+
 <!--
     (menuClick)="onMenuClicked()"
         |
@@ -16,6 +17,7 @@
     [drawerOpened]="drawerOpenedStore()"
     (drawerOpenedChange)="drawerOpenedStore.set($event)"
 ></app-sidenav>
+<app-products-list (productBought)="onProductBought($event)"></app-products-list>
 <!-- <app-sidenav
     [(drawerOpened)]="drawerOpenedStore"
 ></app-sidenav> -->
