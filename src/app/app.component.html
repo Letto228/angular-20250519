@@ -2,7 +2,11 @@
     [appConfig]="applicationConfig"
     (menuClick)="sidenavComponent.toggleDrawer()"
 ></app-header>
-<app-sidenav #sidenavComponent [contentTemplate]="sidenavContent"></app-sidenav>
+<app-sidenav
+    #sidenavComponent
+    class="sidenav-config"
+    [contentTemplate]="sidenavContent"
+></app-sidenav>
 
 <ng-template #sidenavContent>
     <h2>{{ applicationConfig.title }}</h2>
@@ -12,18 +16,18 @@
 <!-- Homework stand -->
 
 <!-- Switch template -->
-<!-- <app-popup-host [template]="switchTemplate() ? first : second"></app-popup-host> -->
+<app-popup-host [template]="switchTemplate() ? first : second"></app-popup-host>
 
 <!-- or -->
 
 <!-- Close template -->
-<!-- <app-popup-host [template]="!closeTemplate() ? first : null"></app-popup-host> -->
+<!-- <app-popup-host [template]="!closeTemplate() ? first : null"></app-popup-host>-->
 
-<!-- <ng-template #first>
+<ng-template #first>
     <h2>First</h2>
     <p>Is first template</p>
 </ng-template>
 <ng-template #second>
     <h2>Second</h2>
     <p>Is second template</p>
-</ng-template> -->
+</ng-template>

@@ -1,0 +1,16 @@
+:host {
+    display: flex;
+    position: absolute;
+}
+
+.modal-config {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 1500;
+    background-color: rgba(0, 0, 0, 0.3);
+}
