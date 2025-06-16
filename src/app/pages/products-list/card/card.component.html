@@ -1,0 +1,16 @@
+<mat-card appearance="outlined" class="example-card">
+    <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>{{ mock.name }}</mat-card-title>
+        <mat-card-subtitle>{{ mock.price }}$</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image alt="mock of dzshka" [src]="mock.images[0].url" />
+    <mat-card-content>
+        <p>{{ mock.name }}</p>
+        <p>{{ mock.rating }} stars</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button>buy</button>
+        <button mat-button>prodat'</button>
+    </mat-card-actions>
+</mat-card>
