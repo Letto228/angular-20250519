@@ -11,16 +11,7 @@ import {MatDrawer, MatSidenavModule} from '@angular/material/sidenav';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidenavComponent {
-    // readonly contentTemplate = input.required<TemplateRef<unknown>>();
-
-    // readonly contentViewport = viewChild.required('contentViewport', {read: ViewContainerRef});
     readonly drawerComponent = viewChild.required(MatDrawer);
-
-    // constructor() {
-    //     effect(() => {
-    //         this.contentViewport().createEmbeddedView(this.contentTemplate());
-    //     });
-    // }
 
     toggleDrawer() {
         this.drawerComponent().toggle();
