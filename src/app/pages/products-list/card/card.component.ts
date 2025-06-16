@@ -17,6 +17,11 @@ export class CardComponent {
 
     readonly buy = output<Product['_id']>();
 
+    constructor() {
+        // eslint-disable-next-line no-console
+        console.log('Card created');
+    }
+
     onProductBuy(event: Event) {
         event.stopPropagation();
 
