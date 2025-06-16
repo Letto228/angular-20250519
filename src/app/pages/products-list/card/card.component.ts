@@ -13,14 +13,6 @@ import {Product} from '../../../shared/products/product.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
-    // readonly product = input.required<{name: string; feedbackCount: number}, Product>({
-    //     transform: (value: Product): {name: string; feedbackCount: number} => {
-    //         return {
-    //             name: value.name,
-    //             feedbackCount: value.feedbacksCount,
-    //         };
-    //     },
-    // });
     readonly product = input.required<Product>();
 
     readonly buy = output<Product['_id']>();

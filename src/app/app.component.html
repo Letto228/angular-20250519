@@ -2,25 +2,28 @@
     [appConfig]="applicationConfig"
     (menuClick)="sidenavComponent.toggleDrawer()"
 ></app-header>
-<!-- <app-sidenav
-    [drawerOpened]="drawerOpenedStore()"
-    (drawerOpenedChange)="drawerOpenedStore.set($event)"
-></app-sidenav> -->
-<!-- <app-sidenav
-    [(drawerOpened)]="drawerOpenedStore"
-></app-sidenav> -->
-<app-sidenav
-    #sidenavComponent
-    [contentTemplateAlternative]="sidenavContent"
-    [contentTemplate]="alternativeSidenavContent"
-></app-sidenav>
-<!-- <app-products-list></app-products-list> -->
+<app-sidenav #sidenavComponent [contentTemplate]="sidenavContent"></app-sidenav>
 
 <ng-template #sidenavContent>
     <h2>{{ applicationConfig.title }}</h2>
     <app-products-list></app-products-list>
 </ng-template>
 
-<ng-template #alternativeSidenavContent>
-    <h2>Alternative</h2>
+<!-- Homework stand -->
+
+<!-- Switch template -->
+<!-- <app-popup-host [template]="switchTemplate() ? first : second"></app-popup-host> -->
+
+<!-- or -->
+
+<!-- Close template -->
+<app-popup-host [template]="!closeTemplate() ? first : null"></app-popup-host>
+
+<ng-template #first>
+    <h2>First</h2>
+    <p>Is first template</p>
+</ng-template>
+<ng-template #second>
+    <h2>Second</h2>
+    <p>Is second template</p>
 </ng-template>
