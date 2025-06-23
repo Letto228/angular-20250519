@@ -1,9 +1,12 @@
 @if (products(); as items) {
-    @for (item of items; track item._id) {
-        <app-card #card appInsertShadow class="card" [product]="item"></app-card>
-    } @empty {
-        Empty
-    }
+    <!-- <div appScrollWithLoading class="scroll-container" (loadNextData)="loadNextProducts()"> -->
+    <div class="scroll-container">
+        @for (item of items; track item._id) {
+            <app-card #card appInsertShadow class="card" [product]="item"></app-card>
+        } @empty {
+            Empty
+        }
+    </div>
 } @else {
     Loading...
 }
