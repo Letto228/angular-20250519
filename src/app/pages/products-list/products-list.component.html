@@ -1,7 +1,46 @@
-<ng-template let-item="ngIf" [ngIf]="products()" [ngIfElse]="loaderTemplate">
-    <ng-template ngFor let-currentProduct [ngForOf]="products()" [ngForTrackBy]="trackBy">
+<!-- <ng-template let-items="ngIf" [ngIf]="products()" [ngIfElse]="loaderTemplate"> -->
+<!-- <ng-container *ngIf="products(); else: loaderTemplate; let items = ngIf; "> -->
+<!-- <ng-container *ngIf="products(); else: loaderTemplate; let items = $implicit; "> -->
+<!-- <ng-container *ngIf="products(); else: loaderTemplate; let items; "> -->
+<!-- <ng-container *ngIf="products(); else: loaderTemplate; ngIf as items"> -->
+<!-- <ng-container *ngIf="products() as items; else: loaderTemplate"> -->
+<!-- <ng-template ngFor let-currentProduct [ngForOf]="products()" [ngForTrackBy]="trackBy"> -->
+<!-- <ng-container *ngFor="let currentProduct; of: products(); trackBy: trackBy">
         <app-card class="card" [product]="currentProduct"></app-card>
-    </ng-template>
-</ng-template>
+    </ng-container> -->
+<!-- </ng-container> -->
 
-<ng-template #loaderTemplate>Loading...</ng-template>
+<!-- <ng-template #loaderTemplate>Loading...</ng-template> -->
+
+<!-- Control flow -->
+
+<!--
+    context = this.ngIf();
+
+    if (this.ngIf()) {
+    
+    }
+-->
+
+<!-- <ng-container *ngIf="products() as items; else: loaderTemplate"> -->
+@if (products(); as items) {
+    <!-- <ng-container *ngFor="let currentProduct; of: items; trackBy: trackBy"> -->
+    @for (
+        item of items;
+        track item._id;
+        let index = $index;
+        let first = $first;
+        let last = $last;
+        let even = $even;
+        let odd = $odd;
+        let count = $count
+    ) {
+        <app-card #card appInsertShadow class="card" [product]="item"></app-card>
+    } @empty {
+        Empty
+    }
+    <!-- </ng-container> -->
+} @else {
+    <!-- <ng-container *ngTemplateOutlet="loaderTemplate"></ng-container> -->
+    Loading...
+}
