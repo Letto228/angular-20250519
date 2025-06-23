@@ -4,13 +4,6 @@
         <mat-card-subtitle>{{ product().price }} $</mat-card-subtitle>
     </mat-card-header>
     <div class="galerey">
-        <!-- <ng-template
-            appCarousel
-            let-img
-            let-next="next"
-            let-back="back"
-            [appCarouselOf]="product().images"
-        > -->
         <ng-container *appCarousel="let next = next of product().images; let img; let back = back">
             <button mat-icon-button (click)="back()">
                 <mat-icon>chevron_left</mat-icon>
