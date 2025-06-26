@@ -21,9 +21,4 @@ export class ProductsListComponent {
             this.products.set(productsMock);
         }, 3000);
     }
-
-    loadNextProducts(): void {
-        // eslint-disable-next-line no-console
-        console.log('Load next products');
-    }
 }
