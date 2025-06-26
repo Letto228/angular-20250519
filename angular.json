@@ -11,6 +11,9 @@
                 },
                 "@schematics/angular:directive": {
                     "flat": false
+                },
+                "@schematics/angular:pipe": {
+                    "flat": false
                 }
             },
             "root": "",
