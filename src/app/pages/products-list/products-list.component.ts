@@ -15,12 +15,7 @@ import {ProductsStoreService} from '../../shared/products/products-store.service
 export class ProductsListComponent {
     private readonly productsStoreService = inject(ProductsStoreService);
 
-    // readonly products = signal<Product[] | null>(null);
-
     constructor() {
-        // setTimeout(() => {
-        //     this.products.set(productsMock);
-        // }, 3000);
         this.productsStoreService.loadProducts();
     }
 

@@ -1,5 +1,4 @@
 import {HttpInterceptorFn} from '@angular/common/http';
-import {tap} from 'rxjs';
 import {baseUrl} from './baser-url.const';
 
 export const baseUrlInterceptor: HttpInterceptorFn = (request, next) => {
@@ -7,13 +6,5 @@ export const baseUrlInterceptor: HttpInterceptorFn = (request, next) => {
         url: `${baseUrl}/${request.url}`,
     });
 
-    // eslint-disable-next-line no-console
-    console.log('Request baseUrlInterceptor', newRequest);
-
-    return next(newRequest).pipe(
-        tap(responce => {
-            // eslint-disable-next-line no-console
-            console.log('Responce baseUrlInterceptor', responce);
-        }),
-    );
+    return next(newRequest);
 };
