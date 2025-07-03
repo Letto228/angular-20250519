@@ -8,8 +8,8 @@ import {
     effect,
 } from '@angular/core';
 
-interface IContext {
-    $implicit: unknown;
+interface IContext<Data> {
+    $implicit: Data;
     curIndex: number;
     isFirst: boolean;
     isLast: boolean;
@@ -22,15 +22,27 @@ interface IContext {
     selector: '[appCarousel]',
     standalone: true,
 })
-export class CarouselDirective {
+export class CarouselDirective<Data> {
     private readonly viewContainerRef = inject(ViewContainerRef);
-    private readonly templateRef = inject<TemplateRef<IContext>>(TemplateRef);
+    private readonly templateRef = inject<TemplateRef<IContext<Data>>>(TemplateRef);
 
     private readonly curIndex = signal<number>(0);
 
-    readonly appCarouselOf = input<unknown[]>([]);
+    readonly appCarouselOf = input<Data[]>([]);
 
     constructor() {
+        this.init();
+    }
+
+    private get isFirst(): boolean {
+        return this.curIndex() === 0;
+    }
+
+    private get isLast(): boolean {
+        return this.curIndex() === this.appCarouselOf().length - 1;
+    }
+
+    private init() {
         effect(() => {
             const items = this.appCarouselOf();
 
@@ -52,14 +64,6 @@ export class CarouselDirective {
                 moveTo: (index: number) => this.moveTo(index),
             });
         });
-    }
-
-    private get isFirst(): boolean {
-        return this.curIndex() === 0;
-    }
-
-    private get isLast(): boolean {
-        return this.curIndex() === this.appCarouselOf().length - 1;
     }
 
     private next(): void {
