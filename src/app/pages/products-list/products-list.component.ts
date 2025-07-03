@@ -1,9 +1,8 @@
-import {ChangeDetectionStrategy, Component, signal} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {CardComponent} from './card/card.component';
-import {productsMock} from '../../shared/products/products.mock';
-import {Product} from '../../shared/products/product.interface';
 import {InsertShadowDirective} from '../../shared/insert-shadow/insert-shadow.directive';
 import {ScrollWithLoadingDirective} from '../../shared/scroll-with-loading/scroll-with-loading.directive';
+import {ProductsStoreService} from '../../shared/products/products-store.service';
 
 @Component({
     selector: 'app-products-list',
@@ -14,11 +13,18 @@ import {ScrollWithLoadingDirective} from '../../shared/scroll-with-loading/scrol
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent {
-    readonly products = signal<Product[] | null>(null);
+    private readonly productsStoreService = inject(ProductsStoreService);
+
+    // readonly products = signal<Product[] | null>(null);
 
     constructor() {
-        setTimeout(() => {
-            this.products.set(productsMock);
-        }, 3000);
+        // setTimeout(() => {
+        //     this.products.set(productsMock);
+        // }, 3000);
+        this.productsStoreService.loadProducts();
+    }
+
+    getProducts(): ReturnType<ProductsStoreService['getProducts']> {
+        return this.productsStoreService.getProducts();
     }
 }
