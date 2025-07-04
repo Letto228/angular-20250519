@@ -6,7 +6,8 @@
     <div class="galerey">
         <ng-template
             appCarousel
-            let-url="url"
+            let-image
+            let-index="index"
             let-next="next"
             let-back="back"
             [appCarouselImagesList]="product().images"
@@ -14,7 +15,7 @@
             <button mat-icon-button (click)="back()">
                 <mat-icon>chevron_left</mat-icon>
             </button>
-            <img mat-card-image alt="Product photo" [src]="url" />
+            <img mat-card-image alt="Product photo" [src]="image.url" />
             <button mat-icon-button (click)="next()">
                 <mat-icon>chevron_right</mat-icon>
             </button>

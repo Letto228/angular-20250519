@@ -1,8 +1,6 @@
-import {ProductImage} from '../products/product-image.interface';
-
-export interface CarouselContext {
-    $implicit: ProductImage;
-    url: ProductImage['url'];
+export interface CarouselContext<Data> {
+    $implicit: Data;
+    index: number;
     next: () => void;
     back: () => void;
 }

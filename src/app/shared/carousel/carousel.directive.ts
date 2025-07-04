@@ -7,20 +7,18 @@ import {
     TemplateRef,
     ViewContainerRef,
 } from '@angular/core';
-import {ProductImage} from '../products/product-image.interface';
 import {CarouselContext} from './carousel-context';
 
 @Directive({
     selector: '[appCarousel]',
     standalone: true,
 })
-export class CarouselDirective {
-    private readonly templateRef = inject<TemplateRef<CarouselContext>>(TemplateRef);
+export class CarouselDirective<Data> {
+    private readonly templateRef = inject<TemplateRef<CarouselContext<Data>>>(TemplateRef);
     private readonly viewContainerRef = inject(ViewContainerRef);
 
-    readonly appCarouselImagesList = input.required<ProductImage[]>();
-
-    currentIndex = signal<number>(0);
+    readonly appCarouselImagesList = input.required<Data[]>();
+    readonly currentIndex = signal<number>(0);
 
     constructor() {
         this.changeIndex();
@@ -28,7 +26,7 @@ export class CarouselDirective {
 
     changeIndex(): void {
         effect(() => {
-            if (!this.appCarouselImagesList()) {
+            if (this.appCarouselImagesList().length === 0) {
                 return;
             }
 
@@ -36,7 +34,7 @@ export class CarouselDirective {
 
             this.viewContainerRef.createEmbeddedView(this.templateRef, {
                 $implicit: this.appCarouselImagesList()[this.currentIndex()],
-                url: this.appCarouselImagesList()[this.currentIndex()].url,
+                index: this.currentIndex(),
                 next: () => {
                     this.nextIndex();
                 },
