@@ -13,13 +13,7 @@ import {Product} from '../../shared/products/product.interface';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductsListComponent {
-    readonly products = signal<Product[] | null>(null);
-
-    constructor() {
-        setTimeout(() => {
-            this.products.set(productsMock);
-        }, 3000);
-    }
+    readonly products = signal<Product[] | null>(productsMock);
 
     trackBy(_index: number, item: Product) {
         // return item; // default
