@@ -1,68 +1,35 @@
 import {Routes} from '@angular/router';
 import {NotFoundComponent} from './pages/not-found/not-found.component';
+import {canDeactivateTestGuard} from './shared/test-guards/can-deactivate-test.guard';
 
 export const routes: Routes = [
+    // {
+    //     path: '',
+    //     pathMatch: 'full',
+    //     // canMatch: [canMatchTestGuard],
+    //     // canActivate: [canActivateTestGuard],
+    //     loadComponent: () =>
+    //         import('./pages/products-list/products-list.component').then(
+    //             m => m.ProductsListComponent,
+    //         ),
+    // },
     {
         path: '',
-        // component: ProductsListComponent,
         redirectTo: '/products-list',
         pathMatch: 'full',
     },
     {
         path: 'products-list',
-        // component: ProductsListComponent,
+        canDeactivate: [canDeactivateTestGuard],
         loadComponent: () =>
             import('./pages/products-list/products-list.component').then(
                 m => m.ProductsListComponent,
             ),
     },
-    // {
-    //     path: 'product/id/test',
-    //     component: TestComponent,
-    // },
-    // {
-    //     path: 'product/id', // product/id/description
-    //     component: ProductComponent,
-    //     pathMatch: 'prefix',
-    //     children: [
-    //         // "description"
-    //         {
-    //             path: 'description',
-    //             component: DescriptionComponent,
-    //         },
-    //         {
-    //             path: 'type',
-    //             component: TypeComponent,
-    //         },
-    //     ],
-    // },
-    // {
-    //     path: 'product',
-    //     children: [
-    //         {
-    //             path: 'id',
-    //             component: ProductComponent,
-    //             children: [
-    //                 {
-    //                     path: 'description',
-    //                     component: DescriptionComponent,
-    //                 },
-    //                 {
-    //                     path: 'type',
-    //                     component: TypeComponent,
-    //                 },
-    //             ],
-    //         },
-    //     ],
-    // },
     {
-        path: 'product', // product/id/description
+        path: 'product',
         loadChildren: () => import('./pages/product/product.routes').then(m => m.routes),
     },
-    // {
-    //     path: 'product/id/test',
-    //     component: TestComponent,
-    // },
     {
         path: '**',
         component: NotFoundComponent,

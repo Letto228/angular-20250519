@@ -8,12 +8,12 @@ export const baseUrlInterceptor: HttpInterceptorFn = (request, next) => {
     });
 
     // eslint-disable-next-line no-console
-    console.log('Request baseUrlInterceptor', newRequest);
+    // console.log('Request baseUrlInterceptor', newRequest);
 
     return next(newRequest).pipe(
-        tap(responce => {
+        tap(_responce => {
             // eslint-disable-next-line no-console
-            console.log('Responce baseUrlInterceptor', responce);
+            // console.log('Responce baseUrlInterceptor', responce);
         }),
     );
 };
