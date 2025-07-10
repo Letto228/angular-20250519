@@ -20,3 +20,8 @@
     border-radius: 8px;
     background-color: #fff;
 }
+
+.header {
+    display: flex;
+    justify-content: flex-end;
+}
