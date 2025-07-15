@@ -1,0 +1,39 @@
+<!-- <div #ngForm="ngForm" ngForm class="filter"> -->
+<form #ngForm="ngForm" class="filter" (ngSubmit)="onChange(ngForm.value)">
+    <mat-form-field appearance="fill">
+        <mat-label>Search</mat-label>
+        <input matInput name="name" [ngModel]="''" />
+    </mat-form-field>
+
+    <div *ngIf="brands; else loaderTemplateRef" ngModelGroup="brands" class="checkbox-container">
+        <mat-checkbox *ngFor="let brand of brands()" [ngModel]="false" [name]="brand">
+            {{ brand }}
+        </mat-checkbox>
+    </div>
+    <div ngModelGroup="priceRange" class="price-range">
+        <div>
+            Min
+            <!-- <app-counter-input [ngModel]="0" (ngModelChange)="onChange($event)"></app-counter-input> -->
+            <!-- <app-counter-input [(ngModel)]="minValue"></app-counter-input> -->
+            <!-- <app-counter-input #ngModel="ngModel" [(ngModel)]="minValue"></app-counter-input> -->
+            <app-counter-input name="min" [ngModel]="0"></app-counter-input>
+        </div>
+        <div>
+            Max
+            <app-counter-input name="max" [ngModel]="999999"></app-counter-input>
+        </div>
+    </div>
+
+    <!-- <button type="submit" (click)="onChange(ngForm.value)">Submit</button> -->
+    <input type="submit" />
+</form>
+<!-- </div> -->
+
+<!-- {{minValue()}}
+{{ngModel.value}}
+{{ngModel.touched}}
+{{ngModel.dirty}} -->
+
+<ng-template #loaderTemplateRef>
+    <mat-spinner diameter="60" class="loader"></mat-spinner>
+</ng-template>

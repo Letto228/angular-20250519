@@ -7,6 +7,7 @@ import {Directive, signal} from '@angular/core';
         '[style.boxShadow]': 'shadow()',
         '(click)': 'onClick($event)',
     },
+    exportAs: 'appInsertShadow',
 })
 export class InsertShadowDirective {
     private readonly shadow = signal('');
