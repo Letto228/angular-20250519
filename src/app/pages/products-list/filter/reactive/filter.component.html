@@ -26,6 +26,9 @@
     </div>
 </form>
 
+{{ form.get('name')?.valid }}
+{{ form.get('name')?.errors | json }}
+
 <ng-template #loaderTemplateRef>
     <mat-spinner diameter="60" class="loader"></mat-spinner>
 </ng-template>

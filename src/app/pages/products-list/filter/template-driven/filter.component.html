@@ -2,7 +2,15 @@
 <form #ngForm="ngForm" class="filter" (ngSubmit)="onChange(ngForm.value)">
     <mat-form-field appearance="fill">
         <mat-label>Search</mat-label>
-        <input matInput name="name" [ngModel]="''" />
+        <input
+            #nameControl="ngModel"
+            matInput
+            name="name"
+            appIsStringValidator
+            required
+            minlength="3"
+            [ngModel]="''"
+        />
     </mat-form-field>
 
     <div *ngIf="brands; else loaderTemplateRef" ngModelGroup="brands" class="checkbox-container">
@@ -28,6 +36,9 @@
     <input type="submit" />
 </form>
 <!-- </div> -->
+
+{{ nameControl.valid }}
+{{ nameControl.errors | json }}
 
 <!-- {{minValue()}}
 {{ngModel.value}}

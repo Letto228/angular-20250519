@@ -10,8 +10,9 @@ import {
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {FormArray, FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {FormArray, FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {CounterInputComponent} from '../../../../shared/counter-input/counter-input.component';
+import {isStringValidator} from './validators/is-string.validator';
 
 @Component({
     selector: 'app-filter',
@@ -36,7 +37,10 @@ export class FilterComponent {
     // readonly minControl = new FormControl(1);
 
     form = new FormGroup({
-        name: new FormControl(''),
+        name: new FormControl('', {
+            validators: [isStringValidator, Validators.required, Validators.minLength(3)],
+            asyncValidators: [],
+        }),
         brands: new FormArray<FormControl<boolean>>([]),
         priceRange: new FormGroup({
             min: new FormControl(0),
@@ -49,6 +53,9 @@ export class FilterComponent {
     }
 
     constructor() {
+        // this.form.get('name')?.setValidators();
+        // this.form.setValue({}, {emitEvent: false});
+        // this.form.updateValueAndValidity();
         // this.minControl.setValue(5);
         // this.minControl.disable();
         // this.minControl.enable();

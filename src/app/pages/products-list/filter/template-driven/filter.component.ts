@@ -5,6 +5,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {FormsModule} from '@angular/forms';
 import {CounterInputComponent} from '../../../../shared/counter-input/counter-input.component';
+import {IsStringValidatorDirective} from './validators/is-string/is-string.validator.directive';
 
 @Component({
     selector: 'app-filter',
@@ -19,6 +20,7 @@ import {CounterInputComponent} from '../../../../shared/counter-input/counter-in
         MatProgressSpinnerModule,
         CounterInputComponent,
         FormsModule,
+        IsStringValidatorDirective,
     ],
 })
 export class FilterComponent {
